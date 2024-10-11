@@ -35,17 +35,17 @@ function BusquedaProductos() {
      </div>
     </div>
     <FiltroCategoria onCategorySelect={setSelectedCategory} />
-    <div>  
-      <ul>
+    <div className="product-list">
         {products.map((product) => (
-          <li key={product.id}>
+          <div className="product-item" key={product.id}>
             <img src={product.thumbnail} alt={product.title} />
-            <p>{product.title}</p>
-            <p>${product.price}</p>
-            <Link to={`/product/${product.id}`}>Ver detalles</Link>
-          </li>
+            <div className="product-details">
+              <h3>{product.title}</h3>
+              <p>${product.price}</p>
+            </div>
+            <Link to={`/product/${product.id}`} className="view-details-btn">Ver detalles</Link>
+          </div>
         ))}
-      </ul>
     </div>
     </>
     

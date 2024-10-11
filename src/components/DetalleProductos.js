@@ -28,19 +28,30 @@ function DetalleProductos({addToCart}) {
   if (!product) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h1>{product.title}</h1>
-       <Carousel>
-        {product.pictures.map((picture) => (
-          <div key={picture.id}>
-            <img src={picture.url} alt={product.title} />
-          </div>
-        ))}
-      </Carousel>
-      <p>{product.price}</p>
-      <p>{description}</p>
-      
-      <table border="1">
+    <div className="product-detail-container">
+      <h1 className="product-title">{product.title}</h1>
+      <div id="productCarousel" className="carousel slide" data-ride="carousel">
+        <div className="carousel-inner">
+          {product.pictures.map((picture, index) => (
+            <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={picture.id}>
+              <img src={picture.url} className="d-block w-100" alt={product.title} />
+            </div>
+          ))}
+        </div>
+        <a className="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="sr-only">Previous</span>
+        </a>
+        <a className="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="sr-only">Next</span>
+        </a>
+      </div>
+      <div className="product-info">
+        <p className="product-price">${product.price}</p>
+        <p className="product-description">{description}</p>
+      </div>
+      <table className="product-attributes">
         <thead>
           <tr>
             <th>Atributo</th>
@@ -56,11 +67,11 @@ function DetalleProductos({addToCart}) {
           ))}
         </tbody>
       </table>
-      <button onClick={() => addToCart(product)}>Comprar</button>
-      
-      <Link to="/">Volver a la búsqueda</Link>
+      <button className="add-to-cart-btn" onClick={() => addToCart(product)}>Agregar al Carrito</button>
+      <Link to="/" className="back-btn">Volver a la búsqueda</Link>
     </div>
   );
+
 }
 
 export default DetalleProductos;

@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BusquedaProductos from './components/BusquedaProductos';
 import DetalleProductos from './components/DetalleProductos';
 import Carrito from './components/Carrito';
+import Header from './components/Header';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -17,12 +17,7 @@ const removeFromCart = (indexToRemove) => {
 
   return (
     <Router>
-      <div>
-        
-        <Link to="/cart">
-          <span>🛒 Carrito ({cart.length})</span>
-        </Link>
-      </div>
+      <Header cartCount={cart.length} /> 
       <Routes>
         <Route path="/" element={<BusquedaProductos />} />
         <Route path="/product/:id" element={<DetalleProductos addToCart={addToCart} />} />

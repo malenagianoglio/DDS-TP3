@@ -1,63 +1,253 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+/* src/App.css */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
     margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Color de fondo claro */
   }
   
-  h1 {
-    color: #343a40;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
+  .header {
+    background: linear-gradient(90deg, #6a11cb, #2575fc); /* Degradado */
     color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .logo a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px; /* Espaciado entre enlaces */
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background 0.3s; /* Transición suave */
+  }
+  
+  .nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Efecto al pasar el ratón */
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
   }
   
   ul {
-    list-style: none;
+    list-style-type: none; /* Sin viñetas */
     padding: 0;
   }
   
   li {
+    background: white; /* Fondo blanco para cada producto */
     margin: 10px 0;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   li img {
-    max-width: 100px;
-    border-radius: 5px;
+    max-width: 100px; /* Tamaño fijo para imágenes */
+    margin-right: 15px;
   }
   
-  table {
-    width: 100%;
+  button {
+    background-color: #28a745; /* Color verde */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #218838; /* Efecto al pasar el ratón */
+  }
+  
+  h1 {
+    color: #333; /* Títulos con un color oscuro */
+  }
+  
+  h3 {
+    color: #555; /* Colores secundarios */
+  }
+  
+  @media (max-width: 600px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start; /* Alineación a la izquierda en pantallas pequeñas */
+    }
+  
+    .nav {
+      flex-direction: column; /* Alineación vertical */
+      width: 100%;
+      gap: 10px;
+    }
+  }
+
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre elementos de la lista */
+  }
+  
+  .product-item {
+    display: flex;
+    justify-content: space-between; /* Espacio entre imagen y detalles */
+    align-items: center; /* Alineación vertical */
+    padding: 10px;
+    border: 1px solid #ddd; /* Bordes sutiles */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo sutil */
+    transition: box-shadow 0.3s; /* Transición suave */
+  }
+  
+  .product-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra al pasar el ratón */
+  }
+  
+  .product-item img {
+    width: 100px; /* Tamaño fijo para la imagen */
+    height: auto;
+    border-radius: 5px; /* Bordes redondeados en la imagen */
+  }
+  
+  .product-details {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 0 15px; /* Espacio interno */
+  }
+  
+  .product-details h3 {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .product-details p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .view-details-btn {
+    background-color: #007bff; /* Color azul */
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .view-details-btn:hover {
+    background-color: #0056b3; /* Efecto al pasar el ratón */
+  }
+
+  .product-detail-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .product-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .carousel-item img {
+    max-height: 500px; /* Ajusta la altura máxima de la imagen */
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+  }  
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+    background-color: rgb(0, 0, 0) !important; /* Color de fondo */
+    border-radius: 50% !important; /* Para hacerlas redondas */
+    }
+
+
+
+  .product-info {
     margin-top: 20px;
+  }
+  
+  .product-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .product-description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .button-container {
+    margin-top: 15px; /* Espacio entre el precio y los botones */
+  }
+  
+  .add-to-cart-btn {
+    background-color: #28a745; /* Color verde */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; /* Espacio entre los botones */
+    transition: background 0.3s;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #218838; /* Efecto al pasar el ratón */
+  }
+  
+  .product-attributes {
+    margin-top: 20px;
+    width: 100%;
     border-collapse: collapse;
   }
   
-  table, th, td {
+  .product-attributes th,
+  .product-attributes td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 8px;
+    text-align: left;
   }
   
-  th {
-    background-color: #f4f4f4;
+  .product-attributes th {
+    background-color: #f2f2f2;
   }
   
+  .back-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .back-btn:hover {
+    text-decoration: underline;
+  }
