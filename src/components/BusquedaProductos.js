@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import FiltroCategoria from './FiltroCategoria';
 
 function BusquedaProductos() {
   const [searchTerm, setSearchTerm] = useState('');
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleSearch = async () => {
-    const response = await fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`);
+    let url = `https://api.mercadolibre.com/sites/MLA/search?q=${searchTerm}`;
+    if (selectedCategory) {
+      url += `&category=${selectedCategory}`;
+    }
+    const response = await fetch(url);
     const data = await response.json();
     setProducts(data.results);
   };
@@ -28,7 +34,7 @@ function BusquedaProductos() {
         </div>
      </div>
     </div>
-
+    <FiltroCategoria onCategorySelect={setSelectedCategory} />
     <div>  
       <ul>
         {products.map((product) => (
