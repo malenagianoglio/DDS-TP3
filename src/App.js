@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BusquedaProductos from './components/BusquedaProductos';
 import DetalleProductos from './components/DetalleProductos';
+import './App.css';
 
 function App() {
   return (

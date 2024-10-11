@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../App.css';
 
 function BusquedaProductos() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,15 +13,23 @@ function BusquedaProductos() {
   };
 
   return (
-    <div>
-      <input 
-        type="text" 
-        placeholder="Buscar productos" 
-        value={searchTerm} 
-        onChange={(e) => setSearchTerm(e.target.value)} 
-      />
-      <button onClick={handleSearch}>Buscar</button>
+    <>
+    <div className="container mt-3 pl-0 pr-0">
+      <div className='input-group mb-3'>
+        <input 
+          type="text" 
+          className='form-control'
+          placeholder="Buscar productos" 
+          value={searchTerm} 
+          onChange={(e) => setSearchTerm(e.target.value)} 
+        />
+        <div className='input-group-append'>
+        <button className="btn btn-primary" onClick={handleSearch}>Buscar</button>
+        </div>
+     </div>
+    </div>
 
+    <div>  
       <ul>
         {products.map((product) => (
           <li key={product.id}>
@@ -32,6 +41,8 @@ function BusquedaProductos() {
         ))}
       </ul>
     </div>
+    </>
+    
   );
 }
 
