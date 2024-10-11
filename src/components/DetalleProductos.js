@@ -5,7 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../App.css';
 
-function DetalleProductos() {
+function DetalleProductos({addToCart}) {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [description, setDescription] = useState("");
@@ -39,6 +39,25 @@ function DetalleProductos() {
       </Carousel>
       <p>{product.price}</p>
       <p>{description}</p>
+      
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Atributo</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {product.attributes.map((attribute) => (
+            <tr key={attribute.id}>
+              <td>{attribute.name}</td>
+              <td>{attribute.value_name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={() => addToCart(product)}>Comprar</button>
+      
       <Link to="/">Volver a la búsqueda</Link>
     </div>
   );
