@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../App.css';
 
 function DetalleProductos() {
@@ -28,7 +30,13 @@ function DetalleProductos() {
   return (
     <div>
       <h1>{product.title}</h1>
-      <img src={product.pictures[0]?.url} alt={product.title} />
+       <Carousel>
+        {product.pictures.map((picture) => (
+          <div key={picture.id}>
+            <img src={picture.url} alt={product.title} />
+          </div>
+        ))}
+      </Carousel>
       <p>{product.price}</p>
       <p>{description}</p>
       <Link to="/">Volver a la búsqueda</Link>
