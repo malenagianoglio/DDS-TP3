@@ -1,3 +1,4 @@
+import '../App.css';
 import React, { useState, useEffect } from 'react';
 
 function FiltroCategorias({ onCategorySelect }) {
@@ -13,8 +14,11 @@ function FiltroCategorias({ onCategorySelect }) {
   }, []);
 
   return (
-    <div>
-      <select onChange={(e) => onCategorySelect(e.target.value)}>
+      <select 
+        id="categorySelect" 
+        className="form-select" 
+        onChange={(e) => onCategorySelect(e.target.value)}
+      >
         <option value="">Todas</option>
         {categories.map((category) => (
           <option key={category.id} value={category.id}>
@@ -22,7 +26,6 @@ function FiltroCategorias({ onCategorySelect }) {
           </option>
         ))}
       </select>
-    </div>
   );
 }
 

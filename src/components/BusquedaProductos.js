@@ -20,8 +20,8 @@ function BusquedaProductos() {
 
   return (
     <>
-    <div className="container mt-3 pl-0 pr-0">
-      <div className='input-group mb-3'>
+    <div className="container-busqueda">
+      <div className='input-group'>
         <input 
           type="text" 
           className='form-control'
@@ -34,7 +34,9 @@ function BusquedaProductos() {
         </div>
      </div>
     </div>
-    <FiltroCategoria onCategorySelect={setSelectedCategory} />
+    <div className='container-categoria'>
+      <FiltroCategoria onCategorySelect={setSelectedCategory} />
+    </div>
     <div className="product-list">
         {products.map((product) => (
           <div className="product-item" key={product.id}>
